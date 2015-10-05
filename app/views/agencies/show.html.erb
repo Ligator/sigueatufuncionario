@@ -1,31 +1,18 @@
 <p>
-  <strong>Name:</strong>
-  <%= @agency.name %>
+  <%= image_tag @agency.logo %>
+</p>
+<p>
+  <h2><%= @agency.name %></h2>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Dirección:</strong>
   <%= @agency.address %>
 </p>
 
 <p>
-  <strong>Target:</strong>
+  <strong>Objetivo de la dependencia:</strong><br>
   <%= @agency.target %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @agency.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @agency.longitude %>
-</p>
-
-<p>
-  <strong>Logo:</strong>
-  <%= @agency.logo %>
 </p>
 
 <%= link_to 'Edit', edit_agency_path(@agency) %> |

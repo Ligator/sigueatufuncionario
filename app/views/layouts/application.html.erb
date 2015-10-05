@@ -24,9 +24,8 @@
 			<% if user_signed_in? %>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/expenses">Gastos<span class="sr-only">(current)</span></a></li>
-					<li><a href="/expenses/monthly">Reporte mensual</a></li>
-					<li><a href="/expenses/history">Historial</a></li>
+					<li><a href="/static_pages/api">API<span class="sr-only">(current)</span></a></li>
+					<li><a href="/static_pages/about">Nosotros</a></li>
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
@@ -42,8 +41,8 @@
 			<% else %>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><%= link_to "Iniciar sesión", new_user_session_path %></li>
-					<li><%= link_to "Registrarse", new_user_registration_path %></li>
+		            <li><a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup">Registrarse</a></li>
+		            <li><a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login">Entrar</a></li>
 				</ul>
 			</div>
 			<% end %>
@@ -62,6 +61,64 @@
 		<% end %>
 		<%= yield %>
 	</div>
+
+	<div class="modal fade" id="singup_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+	      </div>
+	      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+	        <div class="modal-body">
+	          <%= devise_error_messages! %>
+	          <div class="form-inputs">
+	            <%= f.text_field :email, placeholder: "Email", autofocus: true, class: "form-control" %><br>
+	            <%= f.password_field :password, placeholder: "Contraseña", autocomplete: "off", class: "form-control" %><br>
+	            <%= f.password_field :password_confirmation, placeholder: "Repetir Contraseña", autocomplete: "off", class: "form-control" %>
+	          </div>
+	        </div>
+	        <div class="modal-footer">
+	          <div class="form-actions">
+	            <%= f.submit "Registrar", :class => "btn btn-primary"  %>
+	          </div>
+	        </div>
+	      <% end %>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="login_modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title">Login</h4>
+	      </div>
+	      <%= form_for(:user, :url => session_path(:user)) do |f| %>
+	        <div class="modal-body">
+	          <%= f.text_field :email, placeholder: "Email", autofocus: true, class: "form-control" %><br>
+	          <%= f.password_field :password, placeholder: "Contraseña", class: "form-control", autocomplete: "off" %><br>
+	          <%= f.check_box :remember_me %>
+	          <%= f.label "Recordarme" %><br>
+	        </div>
+	        <div class="modal-footer">
+	          <div class="form-actions">
+	            <%= f.submit 'Entrar', :class => "btn btn-primary" %>
+	          </div>
+	        </div>
+	      <% end %>        
+	    </div>
+	  </div>
+	</div>
+
+	<script type="text/javascript">
+	  $( document ).ready(function() {
+	    $('.modal').on('shown.bs.modal', function() {
+	      $(this).find('[autofocus]').focus();
+	    });  
+	  });
+	</script>
 
 </body>
 </html>

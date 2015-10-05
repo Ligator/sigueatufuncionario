@@ -12,16 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label "Nombre de la dependencia" %><br>
+    <%= f.text_field :name, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
+    <%= f.label :logo %><br>
+    <%= f.text_field :logo, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :target %><br>
-    <%= f.text_area :target %>
+    <%= f.label "Dirección" %><br>
+    <%= f.text_area :address, size: "50x5" %>
+  </div>
+  <div class="field">
+    <%= f.label "Objetivo de la dependencia:" %><br>
+    <%= f.text_area :target, size: "50x10" %>
   </div>
   <div class="field">
     <%= f.label :latitude %><br>
@@ -30,10 +34,6 @@
   <div class="field">
     <%= f.label :longitude %><br>
     <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %><br>
-    <%= f.text_field :logo %>
   </div>
   <div class="actions">
     <%= f.submit %>

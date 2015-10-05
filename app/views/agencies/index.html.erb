@@ -1,35 +1,32 @@
-<h1>Listing agencies</h1>
+Escribir algo aquí
+<br>
+<br>
+<br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Target</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Logo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @agencies.each do |agency| %>
-      <tr>
-        <td><%= agency.name %></td>
-        <td><%= agency.address %></td>
-        <td><%= agency.target %></td>
-        <td><%= agency.latitude %></td>
-        <td><%= agency.longitude %></td>
-        <td><%= agency.logo %></td>
-        <td><%= link_to 'Show', agency %></td>
-        <td><%= link_to 'Edit', edit_agency_path(agency) %></td>
-        <td><%= link_to 'Destroy', agency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Dependencias
+  </a>
+  <% @agencies.each do |agency| %>
+    <a href="<%= agency_path(agency.id) %>" class="list-group-item">
+      <div class="row" >
+        <div class="container">
+          <%= image_tag agency.logo, style: "float: left; margin: 5px 30px 0 0;" %>
+          <h4><%= agency.name %></h4>
+          <%= agency.address %>
+        </div>
+      </div>
+      <div class="row" style="margin: 10px 10px 0 0;" >
+        <%= agency.target %>
+      </div>
+    </a>
+    <% if current_user and current_user.is_admin? %>
+      <%= link_to 'Editar', edit_agency_path(agency) %> | 
+      <%= link_to 'Eliminar', agency, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Agency', new_agency_path %>
+<%= link_to 'New Agency', new_agency_path if current_user and current_user.is_admin?%>
