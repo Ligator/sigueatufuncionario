@@ -63,6 +63,6 @@
 <% end %>
 
 <% elsif current_user and current_user.is_admin? %>
-  <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
+  | <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
 <% end %>
 
