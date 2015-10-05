@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'static_pages/api'
+
+  get 'static_pages/about'
+
   devise_for :users
   resources :functionaries
 
