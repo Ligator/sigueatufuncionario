@@ -57,13 +57,12 @@
 </p>
 </div>
 
-
+<% if current_user and current_user.is_admin? %>
+  <%= link_to 'Editar Funcionario', edit_functionary_path(@functionary) %> |
+  <%= link_to 'Regresar', agencies_path %>
+<% end %>
 
 <% elsif current_user and current_user.is_admin? %>
   <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
 <% end %>
 
-<% if current_user and current_user.is_admin? %>
-  <%= link_to 'Editar Funcionario', edit_functionary_path(@functionary) %> |
-  <%= link_to 'Regresar', agencies_path %>
-<% end %>
