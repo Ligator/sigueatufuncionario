@@ -1,5 +1,5 @@
 <p>
-  <strong>Fname:</strong>
+  <strong>Nombre(s):</strong>
   <%= @functionary.fname %>
 </p>
 
@@ -9,13 +9,12 @@
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= @functionary.photo %>
+  <%= image_tag @functionary.photo %>
 </p>
 
 <p>
   <strong>Agency:</strong>
-  <%= @functionary.agency %>
+  <%= link_to @functionary.agency.name, agency_path(@functionary.agency.id) %>
 </p>
 
 <p>
@@ -25,17 +24,20 @@
 
 <p>
   <strong>Salary:</strong>
-  <%= @functionary.salary %>
+  <%= GitHub::Markdown.render_gfm(@functionary.salary).html_safe %>
+  <%#= @functionary.salary %>
 </p>
 
 <p>
-  <strong>Schooling:</strong>
-  <%= @functionary.schooling %>
+  <strong>Perfil Académico:</strong>
+  <%= GitHub::Markdown.render_gfm(@functionary.schooling).html_safe %>
+  <%#= @functionary.schooling %>
 </p>
 
 <p>
-  <strong>Experience:</strong>
-  <%= @functionary.experience %>
+  <strong>Experiencia:</strong>
+  <%= GitHub::Markdown.render_gfm(@functionary.experience).html_safe %>
+  <%#= @functionary.experience %>
 </p>
 
 <p>
@@ -43,5 +45,5 @@
   <%= @functionary.evaluation %>
 </p>
 
-<%= link_to 'Edit', edit_functionary_path(@functionary) %> |
-<%= link_to 'Back', functionaries_path %>
+<%= link_to 'Editar', edit_functionary_path(@functionary) %> |
+<%= link_to 'Regresar', functionaries_path %>

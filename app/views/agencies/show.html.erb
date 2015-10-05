@@ -11,9 +11,59 @@
 </p>
 
 <p>
-  <strong>Objetivo de la dependencia:</strong><br>
-  <%= @agency.target %>
+  <%= GitHub::Markdown.render_gfm(@agency.target).html_safe %>
 </p>
 
-<%= link_to 'Edit', edit_agency_path(@agency) %> |
-<%= link_to 'Back', agencies_path %>
+<% if current_user and current_user.is_admin? %>
+  <%= link_to 'Editar Dependencia', edit_agency_path(@agency) %> |
+  <%= link_to 'Regresar', agencies_path %>
+<% end %>
+
+<% if @agency.functionary.present? %>
+<h2>Titular</h2>
+<div class="row" >
+
+<p>
+  <%= image_tag @functionary.photo, style: "float: left; margin: 5px 30px 0 0;" %>
+</p>
+
+<p>
+  <strong><%= @functionary.fullname %></strong>
+  
+</p>
+<p>
+  Evaluation: 
+  <strong><%= @functionary.evaluation %></strong>
+</p>
+
+<p>
+  Salary:
+  <%= GitHub::Markdown.render_gfm(@functionary.salary).html_safe %>
+  <%#= @functionary.salary %>
+</p>
+</div>
+
+<div class="row" >
+<p>
+  <h3>Perfil Académico:</h3>
+  <%= GitHub::Markdown.render_gfm(@functionary.schooling).html_safe %>
+  <%#= @functionary.schooling %>
+</p>
+
+<p>
+  <h3>Experiencia:</h3>
+  <%= GitHub::Markdown.render_gfm(@functionary.experience).html_safe %>
+  <%#= @functionary.experience %>
+</p>
+</div>
+
+
+
+<% elsif current_user and current_user.is_admin? %>
+  <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
+<% end %>
+
+<% if current_user and current_user.is_admin? %>
+  <%= link_to 'Editar Funcionario', edit_functionary_path(@functionary) %> |
+  <%= link_to 'Regresar', agencies_path %>
+<% end %>

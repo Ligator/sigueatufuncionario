@@ -1,5 +1,5 @@
 class Agency < ActiveRecord::Base
-	has_many :functionaries
+	has_one :functionary
 
 	validates :name, :presence => true
 end

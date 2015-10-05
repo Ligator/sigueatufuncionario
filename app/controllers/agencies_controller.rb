@@ -10,6 +10,7 @@ class AgenciesController < ApplicationController
   # GET /agencies/1
   # GET /agencies/1.json
   def show
+    @functionary = @agency.functionary
   end
 
   # GET /agencies/new

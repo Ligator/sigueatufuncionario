@@ -11,43 +11,47 @@
     </div>
   <% end %>
 
+<!--   <div class="field">
+    <%#= f.label :agency_id %><br>
+    <%#= f.text_field :agency_id %>
+  </div>
+ -->  
+  <%= f.hidden_field :agency_id, value: @agency.id %>
+  Para la dependencia <strong><%= @agency.name %></strong> <br><br>
+
   <div class="field">
-    <%= f.label :fname %><br>
-    <%= f.text_field :fname %>
+    <%= f.label "Nombre(s)" %><br>
+    <%= f.text_field :fname, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br>
-    <%= f.text_field :lname %>
+    <%= f.label "Apellido(s)" %><br>
+    <%= f.text_field :lname, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.text_field :photo %>
+    <%= f.label "Foto" %><br>
+    <%= f.text_field :photo, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :agency_id %><br>
-    <%= f.text_field :agency_id %>
+    <%= f.label "Cargo" %><br>
+    <%= f.text_field :charge, size: 50 %>
   </div>
   <div class="field">
-    <%= f.label :charge %><br>
-    <%= f.text_field :charge %>
+    <%= f.label "Salario" %><br>
+    <%= f.text_field :salary, size: "50x10" %>
   </div>
   <div class="field">
-    <%= f.label :salary %><br>
-    <%= f.text_field :salary %>
+    <%= f.label "Perfil académico" %><br>
+    <%= f.text_area :schooling, size: "50x10" %>
   </div>
   <div class="field">
-    <%= f.label :schooling %><br>
-    <%= f.text_area :schooling %>
+    <%= f.label "Experiencia" %><br>
+    <%= f.text_area :experience, size: "50x10" %>
   </div>
   <div class="field">
-    <%= f.label :experience %><br>
-    <%= f.text_area :experience %>
-  </div>
-  <div class="field">
-    <%= f.label :evaluation %><br>
-    <%= f.text_field :evaluation %>
+    <%= f.label "Evaluación" %><br>
+    <%= f.text_field :evaluation, size: "50x5" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Crear/Actualizar Funcionario" %>
   </div>
 <% end %>

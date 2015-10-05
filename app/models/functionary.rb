@@ -3,4 +3,8 @@ class Functionary < ActiveRecord::Base
 
   validates :fname, :presence => true
   validates :lname, :presence => true
+
+  def fullname
+  	fname + " " + lname
+  end
 end

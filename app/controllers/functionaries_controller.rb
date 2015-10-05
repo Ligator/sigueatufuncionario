@@ -15,10 +15,12 @@ class FunctionariesController < ApplicationController
   # GET /functionaries/new
   def new
     @functionary = Functionary.new
+    @agency = Agency.find(params[:agency_id])
   end
 
   # GET /functionaries/1/edit
   def edit
+    @agency = @functionary.agency
   end
 
   # POST /functionaries

@@ -62,6 +62,20 @@
 		<%= yield %>
 	</div>
 
+    <hr>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12" style="text-align:center;">
+                    <p>
+                      <%= link_to "Documentación de la API", action: :api, controller: :static_pages  %> &nbsp;&nbsp;&nbsp;
+                      <%#= link_to "Documentación de la API", action: :apidoc, controller: :static_pages  %> <!-- &nbsp;&nbsp;&nbsp; -->
+                      <%= link_to "<i class='fa fa-github fa-2x'></i>".html_safe, "https://github.com/Ligator/PeopleCounter" %> &nbsp;&nbsp;&nbsp;
+                      Octubre 2015 
+                    </p>
+                </div>
+            </div>
+        </footer>
+
 	<div class="modal fade" id="singup_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">

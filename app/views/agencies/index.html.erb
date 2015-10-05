@@ -1,6 +1,8 @@
 Escribir algo aquí
 <br>
 <br>
+<%= link_to 'Nueva Dependencia', new_agency_path, class: "btn btn-primary" if current_user and current_user.is_admin?%>
+<br>
 <br>
 
 <div class="list-group">
@@ -12,12 +14,15 @@ Escribir algo aquí
       <div class="row" >
         <div class="container">
           <%= image_tag agency.logo, style: "float: left; margin: 5px 30px 0 0;" %>
-          <h4><%= agency.name %></h4>
-          <%= agency.address %>
+          <h3><%= agency.name %></h3>
+          Titular: <strong><%= agency.functionary.fullname if agency.functionary %></strong> <br>
+          <%= agency.address %> <br>
         </div>
       </div>
       <div class="row" style="margin: 10px 10px 0 0;" >
-        <%= agency.target %>
+        <%= GitHub::Markdown.render_gfm(agency.target).html_safe %>
+
+        <%#= agency.target %>
       </div>
     </a>
     <% if current_user and current_user.is_admin? %>
@@ -29,4 +34,3 @@ Escribir algo aquí
 
 <br>
 
-<%= link_to 'New Agency', new_agency_path if current_user and current_user.is_admin?%>
