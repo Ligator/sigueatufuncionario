@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fname:</strong>
+  <%= @functionary.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @functionary.lname %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @functionary.photo %>
+</p>
+
+<p>
+  <strong>Agency:</strong>
+  <%= @functionary.agency %>
+</p>
+
+<p>
+  <strong>Charge:</strong>
+  <%= @functionary.charge %>
+</p>
+
+<p>
+  <strong>Salary:</strong>
+  <%= @functionary.salary %>
+</p>
+
+<p>
+  <strong>Schooling:</strong>
+  <%= @functionary.schooling %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @functionary.experience %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @functionary.evaluation %>
+</p>
+
+<%= link_to 'Edit', edit_functionary_path(@functionary) %> |
+<%= link_to 'Back', functionaries_path %>
