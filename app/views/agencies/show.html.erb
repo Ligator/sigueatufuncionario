@@ -15,11 +15,11 @@
 </p>
 
 <p>
-  <%= GitHub::Markdown.render_gfm(@agency.target).html_safe %>
+  <%= GitHub::Markdown.render_gfm(@agency.target).html_safe if @agency.target %>
 </p>
 
 <p>
-  <%= GitHub::Markdown.render_gfm(@agency.description).html_safe %>
+  <%= GitHub::Markdown.render_gfm(@agency.description).html_safe if @agency.description %>
 </p>
 
 <% if current_user and current_user.is_admin? %>
