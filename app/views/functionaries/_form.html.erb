@@ -1,4 +1,4 @@
-<%= form_for(@functionary) do |f| %>
+<%= form_for(@functionary, html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if @functionary.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@functionary.errors.count, "error") %> prohibited this functionary from being saved:</h2>
@@ -11,47 +11,98 @@
     </div>
   <% end %>
 
-<!--   <div class="field">
-    <%#= f.label :agency_id %><br>
-    <%#= f.text_field :agency_id %>
-  </div>
- -->  
-  <%= f.hidden_field :agency_id, value: @agency.id %>
-  Para la dependencia <strong><%= @agency.name %></strong> <br><br>
+  <%= f.hidden_field :agency_id, value: @agency ? @agency.id : params[:functionary][:agency_id] %>
+  <%= f.hidden_field :agency_name, value: @agency ? @agency.name : params[:functionary][:agency_name] %>
+  Para la dependencia <strong><%= @agency ? @agency.name : params[:functionary][:agency_name] %></strong> <br><br>
 
-  <div class="field">
-    <%= f.label "Nombre(s)" %><br>
-    <%= f.text_field :fname, size: 50 %>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="fname">Nombre(s)</label>
+    <div class="col-sm-10">
+      <%= f.text_field :fname, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Apellido(s)" %><br>
-    <%= f.text_field :lname, size: 50 %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="lname">Apellido(s)</label>
+    <div class="col-sm-10">
+      <%= f.text_field :lname, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Foto" %><br>
-    <%= f.text_field :photo, size: 50 %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="photo">Foto</label>
+    <div class="col-sm-10">
+      <%= f.text_field :photo, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Cargo" %><br>
-    <%= f.text_field :charge, size: 50 %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="charge">Cargo</label>
+    <div class="col-sm-10">
+      <%= f.text_field :charge, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Salario" %><br>
-    <%= f.text_field :salary, size: "50x10" %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="office_address">Dirección de oficina</label>
+    <div class="col-sm-10">
+      <%= f.text_field :office_address, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Perfil académico" %><br>
-    <%= f.text_area :schooling, size: "50x10" %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="phone">Teléfono</label>
+    <div class="col-sm-10">
+      <%= f.text_field :phone, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Experiencia" %><br>
-    <%= f.text_area :experience, size: "50x10" %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Correo electrónico</label>
+    <div class="col-sm-10">
+      <%= f.text_field :email, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label "Evaluación" %><br>
-    <%= f.text_field :evaluation, size: "50x5" %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="salary">Salario</label>
+    <div class="col-sm-10">
+      <%= f.text_field :salary, size: 50, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit "Crear/Actualizar Funcionario" %>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="functions">Funciones</label>
+    <div class="col-sm-10">
+      <%= f.text_area :functions, size: "150x15", class: "form-control" %>
+    </div>
   </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="schooling">Perfil académico</label>
+    <div class="col-sm-10">
+      <%= f.text_area :schooling, size: "150x15", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="experience">Experiencia</label>
+    <div class="col-sm-10">
+      <%= f.text_area :experience, size: "150x15", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="evaluation">Evaluación</label>
+    <div class="col-sm-10">
+      <%= f.text_field :evaluation, size: 50, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit "Crear/Actualizar Funcionario", class: "btn btn-default" %>
+    </div>
+  </div>
+
 <% end %>

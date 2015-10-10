@@ -15,7 +15,8 @@ class FunctionariesController < ApplicationController
   # GET /functionaries/new
   def new
     @functionary = Functionary.new
-    @agency = Agency.find(params[:agency_id])
+    id = params[:functionary] ? params[:functionary][:agency_id] : params[:agency_id]
+    @agency = Agency.find(id)
   end
 
   # GET /functionaries/1/edit
@@ -30,10 +31,11 @@ class FunctionariesController < ApplicationController
 
     respond_to do |format|
       if @functionary.save
-        format.html { redirect_to @functionary, notice: 'Functionary was successfully created.' }
+        format.html { redirect_to @functionary.agency, notice: 'Functionary was successfully created.' }
         format.json { render :show, status: :created, location: @functionary }
       else
         format.html { render :new }
+        # format.html { render :new, :locals => {agency_id: params[:agency_id]} }
         format.json { render json: @functionary.errors, status: :unprocessable_entity }
       end
     end
@@ -44,7 +46,7 @@ class FunctionariesController < ApplicationController
   def update
     respond_to do |format|
       if @functionary.update(functionary_params)
-        format.html { redirect_to @functionary, notice: 'Functionary was successfully updated.' }
+        format.html { redirect_to @functionary.agency, notice: 'Functionary was successfully updated.' }
         format.json { render :show, status: :ok, location: @functionary }
       else
         format.html { render :edit }
@@ -71,6 +73,6 @@ class FunctionariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def functionary_params
-      params.require(:functionary).permit(:fname, :lname, :photo, :agency_id, :charge, :salary, :schooling, :experience, :evaluation)
+      params.require(:functionary).permit(:fname, :lname, :photo, :phone, :email, :office_address, :functions, :agency_id, :charge, :salary, :schooling, :experience, :evaluation)
     end
 end

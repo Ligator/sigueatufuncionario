@@ -32,28 +32,47 @@
   
 </p>
 <p>
-  Evaluation: 
+  <b>Oficina:</b>
+  <%= @functionary.office_address %>
+</p>
+
+<p>
+  <b>Teléfono:</b>
+  <%= @functionary.phone %>
+</p>
+
+<p>
+  <b>Correo electrónico:</b>
+  <%= @functionary.email %>
+</p>
+
+<p>
+  <b>Evaluación: </b>
   <strong><%= @functionary.evaluation %></strong>
 </p>
 
 <p>
-  Salary:
-  <%= GitHub::Markdown.render_gfm(@functionary.salary).html_safe %>
+  <b>Salario:</b>
+  <%= @functionary.salary.present? ? GitHub::Markdown.render_gfm(@functionary.salary).html_safe : "Información no disponible" %>
   <%#= @functionary.salary %>
 </p>
+
 </div>
 
 <div class="row" >
 <p>
+  <h3>Funciones:</h3>
+  <%= @functionary.functions.present? ? GitHub::Markdown.render_gfm(@functionary.functions).html_safe : "Información no disponible" %>
+</p>
+
+<p>
   <h3>Perfil Académico:</h3>
-  <%= GitHub::Markdown.render_gfm(@functionary.schooling).html_safe %>
-  <%#= @functionary.schooling %>
+  <%= @functionary.schooling.present? ? GitHub::Markdown.render_gfm(@functionary.schooling).html_safe : "Información no disponible" %>
 </p>
 
 <p>
   <h3>Experiencia:</h3>
-  <%= GitHub::Markdown.render_gfm(@functionary.experience).html_safe %>
-  <%#= @functionary.experience %>
+  <%= @functionary.experience.present? ? GitHub::Markdown.render_gfm(@functionary.experience).html_safe : "Información no disponible" %>
 </p>
 </div>
 
