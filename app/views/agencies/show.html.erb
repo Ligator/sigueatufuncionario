@@ -9,9 +9,17 @@
   <strong>Dirección:</strong>
   <%= @agency.address %>
 </p>
+<p>
+  <strong>Teléfono:</strong>
+  <%= @agency.phone %>
+</p>
 
 <p>
   <%= GitHub::Markdown.render_gfm(@agency.target).html_safe %>
+</p>
+
+<p>
+  <%= GitHub::Markdown.render_gfm(@agency.description).html_safe %>
 </p>
 
 <% if current_user and current_user.is_admin? %>
