@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  question_id: 
+  functionary_id: 
+  evaluation: 1
+
+two:
+  user_id: 
+  question_id: 
+  functionary_id: 
+  evaluation: 1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011032239) do
+ActiveRecord::Schema.define(version: 20151011071859) do
 
   create_table "agencies", force: true do |t|
     t.string   "name"
@@ -25,7 +25,21 @@ ActiveRecord::Schema.define(version: 20151011032239) do
     t.string   "phone"
     t.integer  "ordering"
     t.text     "description"
+    t.text     "programs"
   end
+
+  create_table "evaluations", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "functionary_id"
+    t.integer  "evaluation",     default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "evaluations", ["functionary_id"], name: "index_evaluations_on_functionary_id"
+  add_index "evaluations", ["question_id"], name: "index_evaluations_on_question_id"
+  add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id"
 
   create_table "functionaries", force: true do |t|
     t.string   "fname"
@@ -59,6 +73,7 @@ ActiveRecord::Schema.define(version: 20151011032239) do
     t.boolean  "functionary_contact"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "agency_programs"
   end
 
   create_table "users", force: true do |t|
