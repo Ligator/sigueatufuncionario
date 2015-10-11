@@ -54,6 +54,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params.require(:question).permit(:question, :agency_target, :agency_description, :agency_contact, :functionary_functions, :functionary_schooling, :functionary_experience, :functionary_salary, :functionary_contact)
+      params.require(:question).permit(:question, :agency_target, :agency_description, :agency_programs, :agency_contact, :functionary_functions, :functionary_schooling, :functionary_experience, :functionary_salary, :functionary_contact)
     end
 end

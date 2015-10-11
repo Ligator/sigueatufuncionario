@@ -24,6 +24,11 @@
   <%= GitHub::Markdown.render_gfm(@agency.description).html_safe if @agency.description %>
 </p>
 
+<p>
+  <strong>Proyectos / Programas</strong>
+  <%= GitHub::Markdown.render_gfm(@agency.programs).html_safe if @agency.programs %>
+</p>
+
 <% if current_user and current_user.is_admin? %>
   <%= link_to 'Editar Dependencia', edit_agency_path(@agency) %> |
   <%= link_to 'Regresar', agencies_path %>

@@ -24,8 +24,13 @@
       <div class="checkbox">
         <label><%= f.check_box :agency_target %> Objetivos / Funciones </label>
       </div>
+
+<!--       <div class="checkbox">
+        <label><%#= f.check_box :agency_description %> Descripción </label>
+      </div>
+ -->
       <div class="checkbox">
-        <label><%= f.check_box :agency_description %> Descripción </label>
+        <label><%= f.check_box :agency_programs %> Proyectos / Programas </label>
       </div>
       <div class="checkbox">
         <label><%= f.check_box :agency_contact %> Información de contacto </label>
@@ -56,7 +61,7 @@
 
   <div class="form-group"> 
     <div class="col-sm-offset-2 col-sm-10">
-      <%= f.submit "Crear/Actualizar Pregunta", class: "btn btn-default" %>
+      <%= f.submit "Crear/Actualizar Pregunta", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>

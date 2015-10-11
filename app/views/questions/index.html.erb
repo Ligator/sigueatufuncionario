@@ -10,8 +10,8 @@
     </tr>
     <tr>
       <th class="col-md-10">Pregunta</th>
-      <th class="col-sm-1">Objetivos / Funciones</th>
-      <th class="col-sm-1">Descripción</th>
+      <th class="col-sm-1">Objetivos/ Funciones</th>
+      <th class="col-sm-1">Proyectos/ Programas</th>
       <th class="col-sm-1">Contacto</th>
       <th class="col-sm-1">Metas</th>
       <th class="col-sm-1">Perfil académico</th>
@@ -25,9 +25,9 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.question %></td>
+        <td style: "margin: 0px 0px 10px 10px;"><%= question.question %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_target %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_description %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_programs %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_contact %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_functions %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_schooling %></td>
