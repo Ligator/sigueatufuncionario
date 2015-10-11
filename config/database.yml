@@ -23,3 +23,22 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+# # Postgres
+# # ---------------------------
+
+# development:
+#   adapter: postgresql
+#   encoding: utf8
+#   database: siguefunctdb
+#   pool: 5
+#   username: abelpacheco
+#   password: 
+
+# production:
+#   adapter: postgresql
+#   encoding: utf8
+#   database: siguefunctdb
+#   pool: 5
+#   username: abelpacheco
+#   password: 

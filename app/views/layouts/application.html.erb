@@ -24,6 +24,9 @@
 			<% if user_signed_in? %>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+					<% if current_user.is_admin? %>
+						<li><a href="/questions">Preguntas</a></li>
+					<% end %>
 					<li><a href="/static_pages/api">API<span class="sr-only">(current)</span></a></li>
 					<li><a href="/static_pages/about">Nosotros</a></li>
 

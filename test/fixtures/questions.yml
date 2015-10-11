@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question: MyText
+  agency_target: false
+  agency_description: false
+  agency_contact: false
+  functionary_functions: false
+  functionary_schooling: false
+  functionary_experience: false
+  functionary_salary: false
+  functionary_contact: false
+
+two:
+  question: MyText
+  agency_target: false
+  agency_description: false
+  agency_contact: false
+  functionary_functions: false
+  functionary_schooling: false
+  functionary_experience: false
+  functionary_salary: false
+  functionary_contact: false

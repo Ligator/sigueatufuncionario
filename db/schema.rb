@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151010203000) do
+ActiveRecord::Schema.define(version: 20151010233839) do
 
   create_table "agencies", force: true do |t|
     t.string   "name"
@@ -46,6 +46,20 @@ ActiveRecord::Schema.define(version: 20151010203000) do
   end
 
   add_index "functionaries", ["agency_id"], name: "index_functionaries_on_agency_id"
+
+  create_table "questions", force: true do |t|
+    t.text     "question"
+    t.boolean  "agency_target"
+    t.boolean  "agency_description"
+    t.boolean  "agency_contact"
+    t.boolean  "functionary_functions"
+    t.boolean  "functionary_schooling"
+    t.boolean  "functionary_experience"
+    t.boolean  "functionary_salary"
+    t.boolean  "functionary_contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

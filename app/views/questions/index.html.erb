@@ -1,0 +1,46 @@
+<h1>Lista de preguntas</h1>
+
+<table class="table-hover text-center">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" class="table-bordered text-center">Dependencia</th>
+      <th colspan="5" class="table-bordered text-center">Funcionario</th>
+      <th colspan="3"></th>
+    </tr>
+    <tr>
+      <th class="col-md-10">Pregunta</th>
+      <th class="col-sm-1">Objetivo</th>
+      <th class="col-sm-1">Descripción</th>
+      <th class="col-sm-1">Contacto</th>
+      <th class="col-sm-1">Funciones</th>
+      <th class="col-sm-1">Perfil académico</th>
+      <th class="col-sm-1">Experiencia</th>
+      <th class="col-sm-1">Salario</th>
+      <th class="col-md-4">Contacto</th>
+      <th colspan="3" class="col-sm-1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_target %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_description %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_contact %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_functions %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_schooling %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_experience %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_salary %></td>
+        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_contact %></td>
+        <td><%= link_to '<i class="fa fa-pencil fa-2x"></i>'.html_safe, edit_question_path(question) %></td>
+        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nueva Pregunta', new_question_path %>
