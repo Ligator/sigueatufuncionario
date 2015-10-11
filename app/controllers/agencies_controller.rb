@@ -4,7 +4,7 @@ class AgenciesController < ApplicationController
   # GET /agencies
   # GET /agencies.json
   def index
-    @agencies = Agency.order("`ordering`")
+    @agencies = Agency.order("ordering")
   end
 
   # GET /agencies/1
