@@ -10,10 +10,10 @@
     </tr>
     <tr>
       <th class="col-md-10">Pregunta</th>
-      <th class="col-sm-1">Objetivo</th>
+      <th class="col-sm-1">Objetivos/Funciones</th>
       <th class="col-sm-1">Descripción</th>
       <th class="col-sm-1">Contacto</th>
-      <th class="col-sm-1">Funciones</th>
+      <th class="col-sm-1">Metas</th>
       <th class="col-sm-1">Perfil académico</th>
       <th class="col-sm-1">Experiencia</th>
       <th class="col-sm-1">Salario</th>
@@ -35,7 +35,7 @@
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_salary %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_contact %></td>
         <td><%= link_to '<i class="fa fa-pencil fa-2x"></i>'.html_safe, edit_question_path(question) %></td>
-        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, question, method: :delete, data: { confirm: '¿Estás seguro de querer borrar esta pregunta?' } %></td>
       </tr>
     <% end %>
   </tbody>
