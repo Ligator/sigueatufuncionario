@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   respond_to :html
 
   def index
-    @questions = Question.all
+    @questions = Question.order("created_at")
     respond_with(@questions)
   end
 

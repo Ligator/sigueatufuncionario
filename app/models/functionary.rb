@@ -8,7 +8,7 @@ class Functionary < ActiveRecord::Base
 		fname + " " + lname
 	end
 
-	def contacto
+	def contact
 		return "Teléfono: " + phone + ". Email: " + email + ". Oficina: " + office_address + "."
 	end
 end

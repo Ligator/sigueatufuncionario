@@ -4,7 +4,7 @@ class Agency < ActiveRecord::Base
 	validates :name, :presence => true
 	validates :ordering, :presence => true
 
-	def contacto
+	def contact
 		"Teléfono: " + phone + ". Dirección: " + address + "."
 	end
 end

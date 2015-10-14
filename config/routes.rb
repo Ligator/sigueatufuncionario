@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'evaluations/index', as: "evaluations"
+
   resources :questions
 
   get 'static_pages/api'

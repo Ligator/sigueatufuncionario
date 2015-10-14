@@ -96,7 +96,16 @@
   <% end %>
 
   <br><br><br>
-  <%= link_to 'Evaluar funcionario', agencies_path, class: "btn btn-primary" %>
+  <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
 <% elsif current_user and current_user.is_admin? %>
   | <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
 <% end %>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    // $( "table" ).addClass( "table-striped" );
+    $( "table" ).addClass( "table" );
+    // $( "table" ).addClass( "table-condensed" );
+    // $( "table" ).addClass( "table-bordered" );
+  });
+</script>
