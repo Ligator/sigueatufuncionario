@@ -4,70 +4,12 @@
 <div class="row">
   <% @questions.each_with_index do |question, index| %>
     <div class="col-md-4 portfolio-item" style="background-color:white; "> 
-      <%= question.question %><br>
-
-      <%# @agency_methods.each_with_index do |method, i| %>
-        <%# if question.send(method) %>
-          <%#= link_to @agency_labels[i], "#", "data-toggle" => "modal", "data-target" => "##{method}_modal", "class" => "btn btn-default"  %> <br>
-
-        <%# end %>
-      <%# end %>
-
-      <% @agency_hash.keys.each_with_index do |method, i| %>
-        <% if question.send(method) %>
-          <%= link_to @agency_hash[method][0], "#", "data-toggle" => "modal", "data-target" => "##{method}_modal", "class" => "btn btn-default"  %> <br>
+      <%= question.question %><br><br>
+      <% @hash.keys.each do |key| %>
+        <% if question.send(key) %>
+          <%= link_to @hash[key][0], "#", "data-toggle" => "modal", "data-target" => "##{key}_modal", "class" => "btn btn-default btn-block"  %> 
         <% end %>
-      <!-- Modal -->
-      <div class="modal fade" id="<%= "##{method}_modal" %>" role="dialog">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><%= @agency_hash[method][0] %></h4>
-            </div>
-            <div class="modal-body">
-              <p><%= @agency.send(@agency_hash[method][1]) %></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <% end %>
-
-      <% @functionary_hash.keys.each_with_index do |method, i| %>
-        <% if question.send(method) %>
-          <%= link_to @functionary_hash[method][0], "#", "data-toggle" => "modal", "data-target" => "##{method}_modal", "class" => "btn btn-default"  %> <br>
-        <% end %>
-      <!-- Modal -->
-      <div class="modal fade" id="<%= "##{method}_modal" %>" role="dialog">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><%= @functionary_hash[method][0] %></h4>
-            </div>
-            <div class="modal-body">
-              <p><%= @functionary.send(@functionary_hash[method][1]) %></p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <% end %>
-
-      <%# @functionary_methods.each_with_index do |method, i| %>
-        <%# if question.send(method) %>
-          <%#= link_to @functionary_labels[i], "#", "data-toggle" => "modal", "data-target" => "##{method}_modal", "class" => "btn btn-default"  %> <br>
-        <%# end %>
-      <%# end %>
-
-
     </div>
 
     <% if (index+1)%3 == 0 %>
@@ -78,49 +20,30 @@
   <% end %>
 </div>
 
-<table class="table-hover text-center">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="3" class="table-bordered text-center">Dependencia</th>
-      <th colspan="5" class="table-bordered text-center">Funcionario</th>
-      <th colspan="3"></th>
-    </tr>
-    <tr>
-      <th class="col-md-10">Pregunta</th>
-      <th class="col-sm-1">Objetivos/ Funciones</th>
-      <th class="col-sm-1">Proyectos/ Programas</th>
-      <th class="col-sm-1">Contacto</th>
-      <th class="col-sm-1">Metas</th>
-      <th class="col-sm-1">Perfil académico</th>
-      <th class="col-sm-1">Experiencia</th>
-      <th class="col-sm-1">Salario</th>
-      <th class="col-md-4">Contacto</th>
-      <th colspan="3" class="col-sm-1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td style: "margin: 0px 0px 10px 10px;"><%= question.question %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_target %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_programs %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_contact %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_functions %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_schooling %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_experience %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_salary %></td>
-        <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.functionary_contact %></td>
-        <td><%= link_to '<i class="fa fa-pencil fa-2x"></i>'.html_safe, edit_question_path(question) %></td>
-        <td><%= link_to '<i class="fa fa-trash-o fa-2x"></i>'.html_safe, question, method: :delete, data: { confirm: '¿Estás seguro de querer borrar esta pregunta?' } %></td>
-      </tr>
+    <% @hash.keys.each do |key| %>
+      <!-- Modal -->
+      <div class="modal fade" id="<%= "#{key}_modal" %>" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= @hash[key][0] %></h4>
+            </div>
+            <div class="modal-body">
+              <% body = instance_variable_get(@hash[key][1]).send(@hash[key][2]) %>
+              <p><%= body.present? ? GitHub::Markdown.render_gfm(body).html_safe : "<i>Información no disponible</i>".html_safe %></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'Nueva Pregunta', new_question_path %>
-
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $( "table" ).addClass( "table" );
+  });
+</script>
 
