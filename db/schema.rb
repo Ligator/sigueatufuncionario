@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011071859) do
+ActiveRecord::Schema.define(version: 20151014035907) do
 
   create_table "agencies", force: true do |t|
     t.string   "name"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20151011071859) do
     t.string   "photo"
     t.integer  "agency_id"
     t.string   "charge"
-    t.string   "salary"
+    t.text     "salary",         limit: 255
     t.text     "schooling"
     t.text     "experience"
     t.decimal  "evaluation"
