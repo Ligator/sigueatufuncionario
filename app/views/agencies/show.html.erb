@@ -65,15 +65,14 @@
     <b>Evaluación: </b>
     <strong><%= @functionary.evaluation %></strong>
   </p>
+  </div>
 
+  <div class="row" >
   <p>
     <b>Salario:</b>
     <%= @functionary.salary.present? ? GitHub::Markdown.render_gfm(@functionary.salary).html_safe : "Información no disponible" %>
   </p>
 
-  </div>
-
-  <div class="row" >
   <p>
     <h3>Metas:</h3>
     <%= @functionary.functions.present? ? GitHub::Markdown.render_gfm(@functionary.functions).html_safe : "Información no disponible" %>
