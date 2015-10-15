@@ -1,5 +1,6 @@
 class Functionary < ActiveRecord::Base
 	belongs_to :agency
+	has_many :evaluations
 
 	validates :fname, :presence => true
 	validates :lname, :presence => true
