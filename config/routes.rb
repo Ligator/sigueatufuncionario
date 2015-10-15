@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :questions
 
   get 'static_pages/api'
-
   get 'static_pages/about'
+  get 'static_pages/doc'
 
   devise_for :users
   resources :functionaries
