@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  release: 2015-10-15
+  functionay: MyString
+  image: MyString
+  agency: MyString
+  evaluation: 9.99
+  place: 1
+
+two:
+  release: 2015-10-15
+  functionay: MyString
+  image: MyString
+  agency: MyString
+  evaluation: 9.99
+  place: 1

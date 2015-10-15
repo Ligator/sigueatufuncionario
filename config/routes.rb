@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :monthly_results
+
   post 'evaluations/create', controller: "evaluations", action: "create",  as: "create_evaluation"
   get 'evaluations/index', as: "evaluations"
 

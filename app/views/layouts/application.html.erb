@@ -27,8 +27,16 @@
 					<% if current_user.is_admin? %>
 						<li><a href="/questions">Preguntas</a></li>
 					<% end %>
-					<li><a href="/static_pages/api">API<span class="sr-only">(current)</span></a></li>
-					<li><a href="/static_pages/about">Nosotros</a></li>
+					<li><a href="/monthly_results">Resultados mensuales<span class="sr-only">(current)</span></a></li>
+					<li></li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Acerca del reto<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/static_pages/doc">Resumen ejecutivo</a></li>
+							<li><a href="/static_pages/api">API<span class="sr-only">(current)</span></a></li>
+						</ul>
+					</li>
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
@@ -44,6 +52,7 @@
 			<% else %>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/monthly_results">Resultados mensuales<span class="sr-only">(current)</span></a></li>
 		            <li><a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup">Registrarse</a></li>
 		            <li><a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login">Entrar</a></li>
 				</ul>

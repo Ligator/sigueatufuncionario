@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Release:</strong>
+  <%= @monthly_result.release %>
+</p>
+
+<p>
+  <strong>Functionay:</strong>
+  <%= @monthly_result.functionay %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @monthly_result.image %>
+</p>
+
+<p>
+  <strong>Agency:</strong>
+  <%= @monthly_result.agency %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @monthly_result.evaluation %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @monthly_result.place %>
+</p>
+
+<%= link_to 'Edit', edit_monthly_result_path(@monthly_result) %> |
+<%= link_to 'Back', monthly_results_path %>

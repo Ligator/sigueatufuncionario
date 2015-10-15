@@ -1,0 +1,45 @@
+<h1>Resultados mensuales</h1>
+<% meses = %w[meses Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre] %>
+
+<% @monthly_results.each do |monthly_result| %>
+  <div class="row">
+    <h3><%= meses[monthly_result[0].month] %>, <%= monthly_result[0].year %></h3>
+    <hr>
+  </div>
+
+    <% result = monthly_result[1].first %>
+    <div class="row">
+      <div class="col-md-2">
+        <%= image_tag result.image, style: "max-width:90%;", class: "center-block" %><br>
+      </div>
+      <div class="col-md-2">
+        <strong><%= result.functionay %></strong><br>
+        <%= result.agency %><br>
+        <%= result.evaluation %><br>
+        <% if current_user and current_user.is_admin? %>
+          <br><%= link_to 'Editar', edit_monthly_result_path(result) %> | 
+          <%= link_to 'Borrar', result, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    <div class="col-md-10">
+    <% monthly_result[1].each_with_index do |result, i| %>
+      <% if i > 0 %>
+      <div class="col-sm-1">
+        <%= image_tag result.image, style: "max-height:90px;", class: "center-block" %>
+        <%= result.evaluation %><br>
+        <% if current_user and current_user.is_admin? %>
+          <%= link_to 'Editar', edit_monthly_result_path(result) %> | 
+          <%= link_to 'Borrar', result, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+
+    </div>
+
+<% end %>
+
+<br>
+
+<%= link_to 'Nuevo resultado mensual', new_monthly_result_path if current_user and current_user.is_admin? %>

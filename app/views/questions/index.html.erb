@@ -25,7 +25,7 @@
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td style: "margin: 0px 0px 10px 10px;"><%= question.question %></td>
+        <td><br><%= question.question %><br><br></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_target %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_programs %></td>
         <td><%= '<i class="fa fa-check fa-2x"></i>'.html_safe if question.agency_contact %></td>
