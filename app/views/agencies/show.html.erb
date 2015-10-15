@@ -95,7 +95,13 @@
   <% end %>
 
   <br><br><br>
-  <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
+  <% if current_user %>
+    <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
+  <% else %>
+    Por favor, regístrate para que puedas evaluar a tus funcionarios. <br>
+    <a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup" class="btn btn-primary">Registrarse</a>
+    <a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login" class="btn btn-primary">Entrar</a>
+  <% end %>
 <% elsif current_user and current_user.is_admin? %>
   | <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
 <% end %>
