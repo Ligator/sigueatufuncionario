@@ -36,6 +36,6 @@ class EvaluationsController < ApplicationController
       @evaluation.evaluation = params[:evaluation]
       @evaluation.save
     end
-    redirect_to evaluations_path(agency_id: agency_id, star: params[:evaluation])
+    redirect_to evaluations_path(agency_id: agency_id)
   end
 end
