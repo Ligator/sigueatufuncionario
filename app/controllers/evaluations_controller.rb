@@ -4,6 +4,7 @@ class EvaluationsController < ApplicationController
   	@functionary = @agency.functionary
   	@questions = Question.order("created_at")
     @evaluations = Evaluation.where(["functionary_id = ? and user_id = ? and created_at > ?", @functionary.id, current_user.id, Time.now.beginning_of_month])
+    @evaluation_result = @evaluations.size == 0 ? 0.0 : @evaluations.sum(:evaluation).to_f / @evaluations.size.to_f
 
     @hash = {
       "agency_target"          => ["Objetivos/Funciones de la dependencia",     "@agency", "target"], 
@@ -27,7 +28,6 @@ class EvaluationsController < ApplicationController
     params.delete(:controller)
     params.delete(:action)
     @evaluations = Evaluation.where(["functionary_id = ? and user_id = ? and question_id = ? and created_at > ?", params[:functionary_id], params[:user_id], params[:question_id], Time.now.beginning_of_month])
-    
     if @evaluations.blank? 
       @evaluation = Evaluation.new(params)
       @evaluation.save
