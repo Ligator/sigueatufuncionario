@@ -106,7 +106,9 @@ Las evaluaciones se cuentan mensualmente, entonces tienes hasta el último día 
       $(this).parent().find(".star").attr("value", $(this).attr('data-value'));
       $(this).parent().submit();
     }
-    document.location.hash="#section_<%= params[:question] %>";
+    <% if params[:question] %>
+      document.location.hash="#section_<%= params[:question] %>";
+    <% end %>
   });
 </script>
 
