@@ -1,18 +1,36 @@
-<h1>Evalúa a tu funcionario</h1>
-<h2></h2>
-
 <div class="row">
-
+<h1>Evalúa a tu funcionario</h1>
+Las evaluaciones se cuentan mensualmente, entonces tienes hasta el último día del mes para evaluar a tu funcionario, o bien, para verificar y corregir tu evaluación.
+<h2></h2>
   <div class="col-md-4">
     <div class="row">
       <%= image_tag @functionary.photo, style: "max-width:80%;", class: "center-block" %>
     </div>
     <h4><%= @functionary.fullname %></h4>
-    <h4><%= @agency.name %></h4>
+      <p>
+        <b><i class="fa fa-building-o"></i></b>
+        <%= @functionary.office_address %>
+      </p>
+
+      <p>
+        <b><i class="fa fa-phone"></i></b>
+        <%= @functionary.phone %>
+      </p>
+
+      <p>
+        <b><i class="fa fa-envelope"></i></b>
+        <%= @functionary.email %>
+      </p>
+      <p>
+        <b>Evaluación de este mes: </b>
+        <strong><%= "%0.2f" % @functionary.evaluation %></strong>
+      </p>
+
   </div>
 
   <div class="col-md-8">
     <div class="row">
+      <%= link_to image_tag(@agency.logo, style: "float: right; margin: 0px 130px 20px 0px;", class: "center-block"), @agency %>
       <h2>Resultado: <%= "%0.1f" % @evaluation_result %></h2><br>
     </div>
     <div class="row">

@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-lg-12" style="text-align:center;">
                     <p>
-                      <%= link_to "Documentación de la API", action: :api, controller: :static_pages  %> &nbsp;&nbsp;&nbsp;
+                      <%= link_to "Documentación de la API", "/static_pages/api"  %> &nbsp;&nbsp;&nbsp;
                       <%#= link_to "Documentación de la API", action: :apidoc, controller: :static_pages  %> <!-- &nbsp;&nbsp;&nbsp; -->
                       <%= link_to "<i class='fa fa-github fa-2x'></i>".html_safe, "https://github.com/Ligator/PeopleCounter" %> &nbsp;&nbsp;&nbsp;
                       Octubre 2015 
@@ -100,6 +100,7 @@
 	          <%= devise_error_messages! %>
 	          <div class="form-inputs">
 	            <%= f.text_field :email, placeholder: "Email", autofocus: true, class: "form-control" %><br>
+    			<em>(Mínimo 8 caracteres)</em>
 	            <%= f.password_field :password, placeholder: "Contraseña", autocomplete: "off", class: "form-control" %><br>
 	            <%= f.password_field :password_confirmation, placeholder: "Repetir Contraseña", autocomplete: "off", class: "form-control" %>
 	          </div>

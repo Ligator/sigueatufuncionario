@@ -1,116 +1,117 @@
+<div class="row">
+  <h2><%= @agency.name %></h2><br><br>
+  <div class="col-md-4">
+    <%= image_tag @agency.logo %>
+    <p>
+      <br><br>
+      <strong><i class="fa fa-building-o"></i></strong> 
+      <%= @agency.address %>
+    </p>
+    <p>
+      <% if @agency.phone? %>
+        <strong><i class="fa fa-phone"></i></strong>
+        <%= @agency.phone %>
+      <% end %>
+    </p>
 
-<p>
-  <%= image_tag @agency.logo %>
-</p>
+    <% if current_user and current_user.is_admin? %>
+      <%= link_to 'Editar Dependencia', edit_agency_path(@agency) %> |
+      <%= link_to 'Regresar', agencies_path %>
+    <% end %>
 
-<p>
-  <h2><%= @agency.name %></h2>
-</p>
-
-<p>
-  <strong><i class="fa fa-building-o"></i></strong>
-  <%= @agency.address %>
-</p>
-<p>
-  <strong><i class="fa fa-phone"></i></strong>
-  <%= @agency.phone %>
-</p>
-
-<p>
-  <%= GitHub::Markdown.render_gfm(@agency.target).html_safe if @agency.target %>
-</p>
-
-<p>
-  <%= GitHub::Markdown.render_gfm(@agency.description).html_safe if @agency.description %>
-</p>
-
-<p>
-  <strong>Proyectos / Programas</strong>
-  <%= GitHub::Markdown.render_gfm(@agency.programs).html_safe if @agency.programs %>
-</p>
-
-<% if current_user and current_user.is_admin? %>
-  <%= link_to 'Editar Dependencia', edit_agency_path(@agency) %> |
-  <%= link_to 'Regresar', agencies_path %>
-<% end %>
-
-<% if @agency.functionary.present? %>
-  <h2>Titular</h2>
-  <div class="row" >
-
-  <p>
-    <%= image_tag @functionary.photo, style: "float: left; margin: 5px 30px 0 0;" %>
-  </p>
-
-  <p>
-    <strong><%= @functionary.fullname %></strong>
-    
-  </p>
-  <p>
-    <b><i class="fa fa-building-o"></i></b>
-    <%= @functionary.office_address %>
-  </p>
-
-  <p>
-    <b><i class="fa fa-phone"></i></b>
-    <%= @functionary.phone %>
-  </p>
-
-  <p>
-    <b><i class="fa fa-envelope"></i></b>
-    <%= @functionary.email %>
-  </p>
-
-  <p>
-    <b>Evaluación: </b>
-    <strong><%= @functionary.evaluation %></strong>
-  </p>
   </div>
 
-  <div class="row" >
-  <p>
-    <b>Salario:</b>
-    <%= @functionary.salary.present? ? GitHub::Markdown.render_gfm(@functionary.salary).html_safe : "Información no disponible" %>
-  </p>
+  <div class="col-md-8">
+    <%= GitHub::Markdown.render_gfm(@agency.target).html_safe if @agency.target %>
+    <%= GitHub::Markdown.render_gfm(@agency.description).html_safe if @agency.description %>
 
-  <p>
-    <h3>Metas:</h3>
-    <%= @functionary.functions.present? ? GitHub::Markdown.render_gfm(@functionary.functions).html_safe : "Información no disponible" %>
-  </p>
-
-  <p>
-    <h3>Perfil Académico:</h3>
-    <%= @functionary.schooling.present? ? GitHub::Markdown.render_gfm(@functionary.schooling).html_safe : "Información no disponible" %>
-  </p>
-
-  <p>
-    <h3>Experiencia:</h3>
-    <%= @functionary.experience.present? ? GitHub::Markdown.render_gfm(@functionary.experience).html_safe : "Información no disponible" %>
-  </p>
+    <p>
+      <strong>Proyectos / Programas</strong>
+      <%= GitHub::Markdown.render_gfm(@agency.programs).html_safe if @agency.programs %>
+    </p>
   </div>
+</div>
 
-  <% if current_user and current_user.is_admin? %>
-    <%= link_to 'Editar Funcionario', edit_functionary_path(@functionary) %> |
-    <%= link_to 'Regresar', agencies_path %>
-  <% end %>
+<hr>
+<div class="row">
+  <% if @agency.functionary.present? %>
+    <div style="float: right;" >
+      <% if current_user %>
+        <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
+      <% else %>
+        <a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup" class="btn btn-primary">Registrarse</a>
+        <a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login" class="btn btn-primary">Entrar</a>
+        <br>Regístrate para evaluar.
+      <% end %>
+    </div>
+    <h2>Titular</h2>
 
-  <br><br><br>
-  <% if current_user %>
-    <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
-  <% else %>
-    Por favor, regístrate para que puedas evaluar a tus funcionarios. <br>
-    <a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup" class="btn btn-primary">Registrarse</a>
-    <a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login" class="btn btn-primary">Entrar</a>
+    <div class="col-md-4">
+      <p>
+        <%= image_tag @functionary.photo, style: "max-width:80%;", class: "center-block" %>
+      </p>
+
+      <p>
+        <strong><%= @functionary.fullname %></strong>
+        
+      </p>
+      <p>
+        <b><i class="fa fa-building-o"></i></b>
+        <%= @functionary.office_address %>
+      </p>
+
+      <p>
+        <b><i class="fa fa-phone"></i></b>
+        <%= @functionary.phone %>
+      </p>
+
+      <p>
+        <b><i class="fa fa-envelope"></i></b>
+        <%= @functionary.email %>
+      </p>
+
+      <p>
+        <b>Evaluación de este mes: </b>
+        <strong><%= "%0.2f" % @functionary.evaluation %></strong>
+      </p>
+
+      <% if current_user and current_user.is_admin? %>
+        <%= link_to 'Editar Funcionario', edit_functionary_path(@functionary) %> |
+        <%= link_to 'Regresar', agencies_path %>
+      <% end %>
+    </div>
+
+
+    <div class="col-md-8">
+      <p>
+        <h3>Metas:</h3>
+        <%= @functionary.functions.present? ? GitHub::Markdown.render_gfm(@functionary.functions).html_safe : "Información no disponible" %>
+      </p>
+
+      <p>
+        <h3>Perfil Académico:</h3>
+        <%= @functionary.schooling.present? ? GitHub::Markdown.render_gfm(@functionary.schooling).html_safe : "Información no disponible" %>
+      </p>
+
+      <p>
+        <h3>Experiencia:</h3>
+        <%= @functionary.experience.present? ? GitHub::Markdown.render_gfm(@functionary.experience).html_safe : "Información no disponible" %>
+      </p>
+
+      <p>
+        <h3>Salario:</h3>
+        <%= @functionary.salary.present? ? GitHub::Markdown.render_gfm(@functionary.salary).html_safe : "Información no disponible" %>
+      </p>
+    </div>
+
+    <br><br><br>
+  <% elsif current_user and current_user.is_admin? %>
+    <br><%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id), class: "btn btn-primary" %>
   <% end %>
-<% elsif current_user and current_user.is_admin? %>
-  | <%= link_to 'Agregar Titular', new_functionary_path(agency_id: @agency.id) %>
-<% end %>
+</div>
 
 <script type="text/javascript">
   $( document ).ready(function() {
-    // $( "table" ).addClass( "table-striped" );
     $( "table" ).addClass( "table" );
-    // $( "table" ).addClass( "table-condensed" );
-    // $( "table" ).addClass( "table-bordered" );
   });
 </script>

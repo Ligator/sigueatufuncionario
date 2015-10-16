@@ -1,7 +1,7 @@
-Escribir algo aquí
-<br>
-<br>
-<%= link_to 'Nueva Dependencia', new_agency_path, class: "btn btn-primary" if current_user and current_user.is_admin?%>
+<p>
+  <strong>Sigue a tu funcionario</strong> pretende ser el medio por el cual la ciudadanía pueda informarse acerca de las actividades y objetivos de las dependencias de gobierno y sus titulares y, con base en ello, poder evaluar a los funcionarios.
+</p>
+<%= link_to 'Nueva Dependencia', new_agency_path, class: "btn btn-primary", style: "float: right;" if current_user and current_user.is_admin?%>
 <br>
 <br>
 
@@ -14,6 +14,7 @@ Escribir algo aquí
       <div class="row" >
         <div class="container">
           <%= image_tag agency.logo, style: "float: left; margin: 5px 30px 0 0;" %>
+          <%= image_tag agency.functionary.photo, style: "float: right; max-height:80px; margin: 5px 30px 0 0;" %>
           <h3><%= agency.name %></h3>
           Titular: <strong><%= agency.functionary.fullname if agency.functionary %></strong> <br>
           <%= agency.address %> <br>

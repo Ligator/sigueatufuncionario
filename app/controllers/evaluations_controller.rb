@@ -28,6 +28,7 @@ class EvaluationsController < ApplicationController
     params.delete(:controller)
     params.delete(:action)
     @evaluations = Evaluation.where(["functionary_id = ? and user_id = ? and question_id = ? and created_at > ?", params[:functionary_id], params[:user_id], params[:question_id], Time.now.beginning_of_month])
+    
     if @evaluations.blank? 
       @evaluation = Evaluation.new(params)
       @evaluation.save
@@ -36,6 +37,12 @@ class EvaluationsController < ApplicationController
       @evaluation.evaluation = params[:evaluation]
       @evaluation.save
     end
+
+    @evaluations_for_functionary = Evaluation.where(["functionary_id = ? and created_at > ?", params[:functionary_id], Time.now.beginning_of_month])
+    functionary = Functionary.find(params[:functionary_id])
+    functionary.evaluation = @evaluations_for_functionary.size == 0 ? 0.0 : @evaluations_for_functionary.sum(:evaluation).to_f / @evaluations_for_functionary.size.to_f
+    functionary.save
+
     redirect_to evaluations_path(agency_id: agency_id)
   end
 end
