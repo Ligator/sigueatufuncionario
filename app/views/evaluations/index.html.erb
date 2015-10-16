@@ -36,7 +36,7 @@ Las evaluaciones se cuentan mensualmente, entonces tienes hasta el último día 
     <div class="row">
 
       <% @questions.each_with_index do |question, index| %>
-        <div class="col-md-5 portfolio-item" style="background-color:white; margin: 0px 0px 40px 0px;"> 
+        <div id="section_<%= question.id %>" class="col-md-5 portfolio-item" style="background-color:white; margin: 0px 0px 40px 0px;"> 
           <%= question.question %><br>
           <% temp = @evaluations.where(["question_id = ?", question.id]) %><br>
           <% value = temp.first ? temp.first.evaluation : 0 %>
@@ -106,6 +106,7 @@ Las evaluaciones se cuentan mensualmente, entonces tienes hasta el último día 
       $(this).parent().find(".star").attr("value", $(this).attr('data-value'));
       $(this).parent().submit();
     }
+    document.location.hash="#section_<%= params[:question] %>";
   });
 </script>
 

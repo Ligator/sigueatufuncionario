@@ -1,6 +1,10 @@
 class EvaluationsController < ApplicationController
   def index
-  	@agency = Agency.find(params[:agency_id])
+    session[:agency_id] = params[:agency_id] if params[:agency_id]
+    agency_id = params[:agency_id]
+    agency_id ||= session[:agency_id]
+
+  	@agency = Agency.find(agency_id)
   	@functionary = @agency.functionary
   	@questions = Question.order("created_at")
     @evaluations = Evaluation.where(["functionary_id = ? and user_id = ? and created_at > ?", @functionary.id, current_user.id, Time.now.beginning_of_month])
@@ -43,6 +47,6 @@ class EvaluationsController < ApplicationController
     functionary.evaluation = @evaluations_for_functionary.size == 0 ? 0.0 : @evaluations_for_functionary.sum(:evaluation).to_f / @evaluations_for_functionary.size.to_f
     functionary.save
 
-    redirect_to evaluations_path(agency_id: agency_id)
+    redirect_to evaluations_path(agency_id: agency_id, question: params[:question_id])
   end
 end
