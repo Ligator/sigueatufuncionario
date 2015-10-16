@@ -1,2 +1,1 @@
-<h1>StaticPages#api</h1>
-<p>Find me in app/views/static_pages/api.html.erb</p>
+<%= GitHub::Markdown.render_gfm(File.read("#{Rails.root}/public/technicaldoc.md")).html_safe %>
