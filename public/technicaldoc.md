@@ -53,7 +53,7 @@ En la aplicación existen 3 **roles**:
 * Usuarios registrados.
 * Administradores.
 
-Y 4 **secciones** básicas:
+Y 5 **secciones** básicas:
 
 1. **Página principal** ( */* ). Aquí se muestra una lista de las Dependencias del Estado de Jalisco.
 2. **Detalle de la Dependencia** ( */agency/:id* ). Una vez seleccionada una Dependencia podemos ver más información de ésta y también información del funcionario titular.
