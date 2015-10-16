@@ -72,7 +72,7 @@
 
       <p>
         <b>Evaluación de este mes: </b>
-        <strong><%= "%0.2f" % @functionary.evaluation %></strong>
+        <strong><%= @functionary.evaluation? ? 0.0 : "%0.2f" % @functionary.evaluation %></strong>
       </p>
 
       <% if current_user and current_user.is_admin? %>
