@@ -1,6 +1,10 @@
 <p>
   <strong>Sigue a tu funcionario</strong> pretende ser el medio por el cual la ciudadanía pueda informarse acerca de las actividades y objetivos de las dependencias de gobierno y sus titulares y, con base en ello, poder evaluar a los funcionarios.
 </p>
+<p>
+  Elije una dependencia, conoce qué hace, cómo lo hace y quién está al frente de ella y, ¡evalúa su desempeño!(*)
+</p>
+<small>(*) Necesitas registrarte para evaluar a tu funcionario, es rápido y gratuito.</small>
 <%= link_to 'Nueva Dependencia', new_agency_path, class: "btn btn-primary", style: "float: right;" if current_user and current_user.is_admin?%>
 <br>
 <br>

@@ -1,4 +1,16 @@
 <div class="row">
+  <% if @agency.functionary.present? %>
+    <div style="float: right;" >
+      <% if current_user %>
+        <%= link_to 'Evaluar funcionario', evaluations_path(agency_id: @agency.id), class: "btn btn-primary" %>
+      <% else %>
+        <a href="#" data-toggle="modal" data-target="#singup_modal" id="button-to-signup" class="btn btn-primary">Registrarse</a>
+        <a href="#" data-toggle="modal" data-target="#login_modal" id="button-to-login" class="btn btn-primary">Entrar</a>
+        <br>Regístrate para evaluar.
+      <% end %>
+    </div>
+  <% end %>
+  
   <h2><%= @agency.name %></h2><br><br>
   <div class="col-md-4">
     <%= image_tag @agency.logo %>
